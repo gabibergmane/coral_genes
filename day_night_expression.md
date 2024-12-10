@@ -5,7 +5,9 @@ select3
 
 select3.plot.scatter("mean_day", "mean_night").set(
     xlabel="mean day expression",
-    ylabel="mean night expression")
+    ylabel="mean night expression",
+    ylim=(-50, 2500)
+)
 
 from sklearn.linear_model import LinearRegression
 X=select3[["mean_day"]]
