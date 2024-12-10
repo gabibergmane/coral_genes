@@ -17,8 +17,10 @@ train_X, test_X, train_y, test_y = train_test_split(X, y, random_state=42)
 day_night_model = LinearRegression(fit_intercept=True)
 day_night_model.fit(train_X, train_y)
 
-pred=pd.DataFrame({"mean_day":[0,2000]})
+pred=pd.DataFrame({"mean_day":[0,2500]})
 pred["mean_night"] = day_night_model.predict(pred)
 sns.lineplot(data=pred, x="mean_day", y="mean_night", c="red", linestyle=":")
 
+print(" Model gradient: ", day_night_model.coef_[0])
+print("Model intercept:", day_night_model.intercept_)
 day_night_model.score(test_X, test_y)
