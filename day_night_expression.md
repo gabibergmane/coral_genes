@@ -3,7 +3,7 @@ select2["mean_night"] = (select2["N1"]+select2["N2"]+select2["N3"])/3
 select3 = select2.drop(["avg_day", "avg_night"], axis=1)
 select3
 
-select3.plot.scatter("mean_day", "mean_night").set(
+select3.plot.scatter("mean_day", "mean_night", label = "Genes").set(
     xlabel="mean day expression",
     ylabel="mean night expression",
     ylim=(-50, 2500)
@@ -21,7 +21,7 @@ day_night_model.fit(train_X, train_y)
 
 pred=pd.DataFrame({"mean_day":[0,2500]})
 pred["mean_night"] = day_night_model.predict(pred)
-sns.lineplot(data=pred, x="mean_day", y="mean_night", c="red", linestyle=":")
+sns.lineplot(data=pred, x="mean_day", y="mean_night", c="red", linestyle=":", label ="Regression line")
 
 print(" Model gradient: ", day_night_model.coef_[0])
 print("Model intercept:", day_night_model.intercept_)
